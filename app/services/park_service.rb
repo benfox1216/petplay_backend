@@ -1,8 +1,8 @@
 class ParkService
-  att_reader :name
+  att_reader :location
   
-  def initialize(name)
-    @name = name
+  def initialize(location)
+    @location = location
   end
   
   def google_parks
@@ -12,8 +12,10 @@ class ParkService
   private
   
   def response
-    uri = "/maps/api/place/findplacefromtext/output?parameters"
+    key = ENV[GOOGLE_API_KEY]
+    params = "input=#{@location}&inputtype=textquery&key=#{key}"
     
-    'https://maps.googleapis.com'
+    uri = "/maps/api/place/findplacefromtext/json?#{params}"
+    Faraday.get("https://maps.googleapis.com/#{uri}")
   end
 end
