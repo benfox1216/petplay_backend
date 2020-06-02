@@ -10,4 +10,7 @@ gem 'sinatra-contrib'
 
 gem 'json'
 gem 'fast_jsonapi'
+gem 'pry'
+gem 'minitest'
+gem 'excon'
 gem 'figaro'
