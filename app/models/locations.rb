@@ -1,4 +1,4 @@
-require './services/park_service'
+require './app/services/park_service'
 require 'json'
 
 class Locations
