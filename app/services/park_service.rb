@@ -30,7 +30,7 @@ class ParkService
   def response
     Excon.post('https://maps.googleapis.com/maps/api/place/textsearch/json',
                query: {
-                        key: ENV[:GOOGLE_MAPS_API_KEY],
+                        key: ENV['GOOGLE_MAPS_API_KEY'],
                         query: "parks+in+#{@origin}",
                         max_results: '20'
                       })

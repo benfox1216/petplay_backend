@@ -1,6 +1,8 @@
 require 'sinatra'
 require 'sinatra/namespace'
 require 'mongoid'
+require 'dotenv'
+Dotenv.load('environment_keys.env')
 
 Mongoid.load!(File.join(File.dirname(__FILE__), 'config', 'mongoid.yml'))
 
