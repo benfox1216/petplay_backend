@@ -1,21 +1,21 @@
 require 'sinatra'
 require 'sinatra/namespace'
 require 'mongoid'
+require 'dotenv'
+require 'json'
+require './lib/park_service'
 
-Mongoid.load!(File.join(File.dirname(__FILE__), 'config', 'mongoid.yml'))
+Dotenv.load('environment_keys.env')
+
+set :port, ENV['PORT']
 
 namespace '/api/v1' do
   before do
     content_type 'application/json'
-    # Here we'll want to delete all park objects
   end
   
   get '/parks' do
-    google_response = ParkService.new(params[:location])
-    parks = google_response.google_parks
-    
-    # Create park objects
-    
-    render json: ParkSerializer.new(Park.all)
+    park_list = ParkService.park_list(request["location"])
+    JSON.generate(park_list)
   end
 end
