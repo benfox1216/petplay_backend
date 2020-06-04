@@ -10,8 +10,10 @@ class ServiceTest < MiniTest::Test
   end
 
   def test_it_can_return_formatted_response
-    assert_instance_of Array, @json
-    @json.each do |park|
+    assert_instance_of Hash, @json
+    assert_equal 5, @json[:parks].count
+
+    @json[:parks].each do |park|
       assert_instance_of Hash, park
       park.each do |key, value|
         assert_equal value, park[key]
