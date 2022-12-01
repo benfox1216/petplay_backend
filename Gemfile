@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.5.3'
 
-gem 'sinatra', '~> 2.0'
+gem 'sinatra', '~> 2.2'
 gem 'mongoid', '~> 7.0'
 
 # Required to use some advanced features of# Sinatra, like namespaces
